@@ -5,28 +5,31 @@
  * - Only add or edit code in areas marked with ✏️
  */
 
-describe("functions", function() {
+describe("basics", function() {
     "use strict";
 
-    describe("Function declaration", () => {
+    describe("example test", function(){
         it("should run without errors", function() {
-            myFunction(); // myFunction should already be callable here
 
-            ////////////////////////////////////////////////////////////////////
-            // ✏️ ADD CODE HERE ✏️
+            /////////////////////////////////////////////////////////
 
+            const somevariable = true ;
             ////////////////////////////////////////////////////////////////////
+
+            expect(somevariable).to.equal(true);
         });
     });
 
-    describe("Function expression", () => {
+    describe("some variable declarations are hoisted", function() {
         it("should run without errors", function() {
-            expect(() => {
+            expect(somevariable).to.equal(undefined); 
                 myFunction(); // myFunction should NOT yet be callable here
             }).to.throw("Cannot access 'myFunction' before initialization");
 
             ////////////////////////////////////////////////////////////////////
             // ✏️ ADD CODE HERE ✏️
+            console.log (somevariable);
+            var somevariable = undefined ;
 
             ////////////////////////////////////////////////////////////////////
 
@@ -34,14 +37,18 @@ describe("functions", function() {
         });
     });
 
-    describe("Function alias", () => {
+    describe("other variable declarations are not hoisted", function() {
         it("should run without errors", function() {
-            function myFunction() {}
+            expect(() => (
+                somevariable; // somevariable shouldnot yetbe defined here
+            )).to.throw("cannot access 'somevariable' before innitialization");
 
             ////////////////////////////////////////////////////////////////////
             // ✏️ ADD CODE HERE ✏️
-
+            let somevariable;
             ////////////////////////////////////////////////////////////////////
+            expect(somevariable).to.equal(undefined);
+            }};
 
             if (myFunction !== otherFunction) {
                 throw new Error(
